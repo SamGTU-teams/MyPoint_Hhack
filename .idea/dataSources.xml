@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="mypoint_db" uuid="48e37d6e-7e6a-4369-a93f-ad27c08f6567">
-      <driver-ref>postgresql</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://localhost:5432/mypoint_db</jdbc-url>
-    </data-source>
     <data-source source="LOCAL" name="u1063682_sqlmipoint@37.140.192.78" uuid="219554c0-9390-4be2-8320-5eeec733dc0b">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>

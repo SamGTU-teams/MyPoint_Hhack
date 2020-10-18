@@ -4,6 +4,8 @@ import Data.Point;
 import Exception.GoogleRequestException;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonObject;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -23,13 +25,12 @@ public class GeoCoding {
      **/
     public static Point geoCodePoint(String placeName) {
         Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(Point.class, Point.pointJsonDeserializer).create();
-        Point point = gson.fromJson(Objects.requireNonNull(readJson(placeName)).orElseThrow(GoogleRequestException::new),
+        return gson.fromJson(Objects.requireNonNull(readJson(placeName)).orElseThrow(GoogleRequestException::new),
                 Point.class);
-        return point;
     }
 
-    public static void setApiKey(Properties info){
-        if(API_KEY == null || API_KEY.isEmpty()){
+    public static void setApiKey(Properties info) {
+        if (API_KEY == null || API_KEY.isEmpty()) {
             API_KEY = info.getProperty("key");
         }
     }

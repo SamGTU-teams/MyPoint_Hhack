@@ -71,7 +71,7 @@ public class DBListener extends ConnectionDB {
     private void updateGeoCoding(int id_order, String address) {
         System.out.println(id_order);
         Point point = GeoCoding.geoCodePoint(address);
-        double lat = point.latitude, lon = point.longitude;
+        double lat = point.lat, lon = point.lon;
 
         try (PreparedStatement statement = connection.prepareCall(UPDATE_TEMP_ORDER)) {
             statement.setDouble(1, lat);

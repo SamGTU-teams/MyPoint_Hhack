@@ -18,7 +18,7 @@ public class Courier extends Personality<Courier> {
     @Override
     public Courier initTrial(Trial trial) {
         this.trial = trial;
-        pars.add("origin=" + location.latitude + "%2C" + location.longitude + trial);
+        pars.add("origin=" + location.lat + "%2C" + location.lon + trial);
         return this;
     }
 
