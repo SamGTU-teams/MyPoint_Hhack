@@ -9,7 +9,11 @@ create table couriers
     busy           bool,
     online         bool,
     rating         float,
-    vehicle        int references vehicles (id)
+    vehicle        int references vehicles (id),
+    session        text,
+    has_geo        bool,
+    geo_point      text,
+    got_order      boolean
 );
 
 create table orders
