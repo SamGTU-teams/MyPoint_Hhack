@@ -726,30 +726,322 @@
       <ObjectGrants>ALL PRIVILEGES|u1063682\_sqlmipoint:null!
 </ObjectGrants>
     </user>
-    <routine id="227" parent="3" name="calculateDistance">
+    <table id="227" parent="3" name="buildings"/>
+    <table id="228" parent="3" name="checkOrder"/>
+    <table id="229" parent="3" name="couriers"/>
+    <table id="230" parent="3" name="orders"/>
+    <table id="231" parent="3" name="organizations"/>
+    <table id="232" parent="3" name="tempOrder"/>
+    <table id="233" parent="3" name="vehicles"/>
+    <routine id="234" parent="3" name="calculateDistance">
       <SourceTextLength>309</SourceTextLength>
       <Definer>u1063682_one_cod@%</Definer>
       <RoutineKind>function</RoutineKind>
     </routine>
-    <argument id="228" parent="227">
+    <routine id="235" parent="3" name="checkOrder">
+      <SourceTextLength>873</SourceTextLength>
+      <Definer>u1063682_one_cod@%</Definer>
+      <RoutineKind>procedure</RoutineKind>
+    </routine>
+    <routine id="236" parent="3" name="countOnlineCouriers">
+      <SourceTextLength>58</SourceTextLength>
+      <Definer>u1063682_one_cod@%</Definer>
+      <RoutineKind>procedure</RoutineKind>
+    </routine>
+    <routine id="237" parent="3" name="countUsers">
+      <SourceTextLength>203</SourceTextLength>
+      <Definer>u1063682_one_cod@%</Definer>
+      <RoutineKind>procedure</RoutineKind>
+    </routine>
+    <routine id="238" parent="3" name="deleteCheckOrder">
+      <SourceTextLength>57</SourceTextLength>
+      <Definer>u1063682_one_cod@%</Definer>
+      <RoutineKind>procedure</RoutineKind>
+    </routine>
+    <routine id="239" parent="3" name="deleteTempData">
+      <SourceTextLength>55</SourceTextLength>
+      <Definer>u1063682_one_cod@%</Definer>
+      <RoutineKind>procedure</RoutineKind>
+    </routine>
+    <routine id="240" parent="3" name="getOrderData">
+      <SourceTextLength>2161</SourceTextLength>
+      <Definer>u1063682_one_cod@%</Definer>
+      <RoutineKind>procedure</RoutineKind>
+    </routine>
+    <routine id="241" parent="3" name="getOrders">
+      <SourceTextLength>429</SourceTextLength>
+      <Definer>u1063682_one_cod@%</Definer>
+      <RoutineKind>procedure</RoutineKind>
+    </routine>
+    <routine id="242" parent="3" name="selectPreviewCouriers">
+      <SourceTextLength>2948</SourceTextLength>
+      <Definer>u1063682_one_cod@%</Definer>
+      <RoutineKind>procedure</RoutineKind>
+    </routine>
+    <column id="243" parent="227" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="244" parent="227" name="latitude">
+      <Position>2</Position>
+      <DataType>float|0s</DataType>
+    </column>
+    <column id="245" parent="227" name="longitude">
+      <Position>3</Position>
+      <DataType>float|0s</DataType>
+    </column>
+    <column id="246" parent="227" name="address">
+      <Position>4</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="247" parent="227" name="organization">
+      <Position>5</Position>
+      <DataType>int(11)|0s</DataType>
+    </column>
+    <key id="248" parent="227" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="249" parent="228" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+    </column>
+    <column id="250" parent="228" name="checked">
+      <Position>2</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <DefaultExpression>0</DefaultExpression>
+    </column>
+    <column id="251" parent="228" name="distance">
+      <Position>3</Position>
+      <DataType>float|0s</DataType>
+    </column>
+    <column id="252" parent="228" name="travel_time">
+      <Position>4</Position>
+      <DataType>timestamp|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
+    </column>
+    <column id="253" parent="228" name="path">
+      <Position>5</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="254" parent="229" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="255" parent="229" name="name">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="256" parent="229" name="last_time">
+      <Position>3</Position>
+      <DataType>timestamp|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
+    </column>
+    <column id="257" parent="229" name="last_latitude">
+      <Position>4</Position>
+      <DataType>float|0s</DataType>
+    </column>
+    <column id="258" parent="229" name="last_longitude">
+      <Position>5</Position>
+      <DataType>float|0s</DataType>
+    </column>
+    <column id="259" parent="229" name="telegram_id">
+      <Position>6</Position>
+      <DataType>int(11)|0s</DataType>
+    </column>
+    <column id="260" parent="229" name="busy">
+      <Position>7</Position>
+      <DataType>tinyint(1)|0s</DataType>
+    </column>
+    <column id="261" parent="229" name="online">
+      <Position>8</Position>
+      <DataType>tinyint(1)|0s</DataType>
+    </column>
+    <column id="262" parent="229" name="rating">
+      <Position>9</Position>
+      <DataType>float|0s</DataType>
+    </column>
+    <column id="263" parent="229" name="vehicle">
+      <Position>10</Position>
+      <DataType>int(11)|0s</DataType>
+    </column>
+    <key id="264" parent="229" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="265" parent="230" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="266" parent="230" name="latitude">
+      <Position>2</Position>
+      <DataType>float|0s</DataType>
+    </column>
+    <column id="267" parent="230" name="longitude">
+      <Position>3</Position>
+      <DataType>float|0s</DataType>
+    </column>
+    <column id="268" parent="230" name="address">
+      <Position>4</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="269" parent="230" name="accepted">
+      <Position>5</Position>
+      <DataType>timestamp|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
+    </column>
+    <column id="270" parent="230" name="acceptance">
+      <Position>6</Position>
+      <DataType>timestamp|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0000-00-00 00:00:00&apos;</DefaultExpression>
+    </column>
+    <column id="271" parent="230" name="order_taken">
+      <Position>7</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <DefaultExpression>0</DefaultExpression>
+    </column>
+    <column id="272" parent="230" name="order_finished">
+      <Position>8</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <DefaultExpression>0</DefaultExpression>
+    </column>
+    <column id="273" parent="230" name="courier_id">
+      <Position>9</Position>
+      <DataType>int(11)|0s</DataType>
+    </column>
+    <column id="274" parent="230" name="stock">
+      <Position>10</Position>
+      <DataType>int(11)|0s</DataType>
+    </column>
+    <key id="275" parent="230" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="276" parent="231" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="277" parent="231" name="name">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="278" parent="231" name="products">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <key id="279" parent="231" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="280" parent="232" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="281" parent="232" name="finish_address">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="282" parent="232" name="stock">
+      <Position>3</Position>
+      <DataType>int(11)|0s</DataType>
+    </column>
+    <column id="283" parent="232" name="ready">
+      <Position>4</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <DefaultExpression>0</DefaultExpression>
+    </column>
+    <column id="284" parent="232" name="end_lat">
+      <Position>5</Position>
+      <DataType>float|0s</DataType>
+    </column>
+    <column id="285" parent="232" name="end_lon">
+      <Position>6</Position>
+      <DataType>float|0s</DataType>
+    </column>
+    <key id="286" parent="232" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="287" parent="233" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="288" parent="233" name="name">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="289" parent="233" name="speed">
+      <Position>3</Position>
+      <DataType>float|0s</DataType>
+    </column>
+    <key id="290" parent="233" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <argument id="291" parent="234">
       <ArgumentDirection>R</ArgumentDirection>
       <DataType>float|0s</DataType>
     </argument>
-    <argument id="229" parent="227" name="lat1">
+    <argument id="292" parent="234" name="lat1">
       <Position>1</Position>
       <DataType>float|0s</DataType>
     </argument>
-    <argument id="230" parent="227" name="lat2">
+    <argument id="293" parent="234" name="lat2">
       <Position>2</Position>
       <DataType>float|0s</DataType>
     </argument>
-    <argument id="231" parent="227" name="lon1">
+    <argument id="294" parent="234" name="lon1">
       <Position>3</Position>
       <DataType>float|0s</DataType>
     </argument>
-    <argument id="232" parent="227" name="lon2">
+    <argument id="295" parent="234" name="lon2">
       <Position>4</Position>
       <DataType>float|0s</DataType>
+    </argument>
+    <argument id="296" parent="235" name="id_order">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+    </argument>
+    <argument id="297" parent="238" name="id_order">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+    </argument>
+    <argument id="298" parent="239" name="id_temp">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+    </argument>
+    <argument id="299" parent="240" name="id_order">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+    </argument>
+    <argument id="300" parent="242" name="temp_order">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
     </argument>
   </database-model>
 </dataSource>
