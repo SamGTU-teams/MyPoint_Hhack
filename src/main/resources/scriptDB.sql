@@ -243,4 +243,13 @@ begin
              inner join couriers c on o.courier_id = c.id;
 end;
 
+create procedure loadGeoposition(id_courier int, lat float, lon float)
+begin
+    update couriers
+    set last_time      = current_time,
+        last_latitude  = lat,
+        last_longitude = lon
+    where id = id_courier;
+end;
+
 

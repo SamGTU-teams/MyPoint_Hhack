@@ -30,5 +30,6 @@ public class Launcher {
 
         DBListener listener = new DBListener(URL, SQLProperties);
         listener.run();
+
     }
 }
